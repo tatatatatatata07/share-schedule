@@ -1,0 +1,11 @@
+<h1>シェアカレンダー</h1>
+
+<p>こんにちは　<%= @user.name %>　様</p>
+
+<p>
+シェアカレンダーにご登録いただきありがとうございます。<br>
+以下のURLをクリックしてアカウントの登録を完了してください。
+</p>
+
+<%= link_to "アクティベーションする", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
