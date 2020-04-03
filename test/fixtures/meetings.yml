@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  user: one
+  start_time: 2020-04-02 07:39:32
+  content: MyText
+
+two:
+  title: MyText
+  user: two
+  start_time: 2020-04-02 07:39:32
+  content: MyText
