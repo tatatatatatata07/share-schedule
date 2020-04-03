@@ -20,5 +20,5 @@
   <% end %>
   
   <% end %>
-  <%= will_paginate @me %>
+  <%= will_paginate @me, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 <% end %>

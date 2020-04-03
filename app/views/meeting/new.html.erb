@@ -1,21 +1,21 @@
 <% provide(:first_title, "スケジュールの入力") %>
-<h1>予定の作成</h1>
+<h1><%= params[:date].to_date.month %> 月 <%= params[:date].to_date.day %> 日 のスケジュール作成</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:meeting, url: schedule_path) do |f| %>
+    <%= form_for(@meeting, url: schedule_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
     
-      <%= f.label :title, "予定のタイトル", placeholder: "例：ミーティング" %>
-      <%= f.text_area :title, class: 'form-control' %>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_area :title, :placeholder => "例：ミーティング（30文字まで）", class: 'form-control' %>
 
 
-      <%= f.label :content, "詳細", placeholder: "例：2F B室にて" %>
-      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.label :content, "スケジュールの詳細" %>
+      <%= f.text_area :content, :placeholder => "例：2F B室にて（200文字まで）", class: 'form-control' %>
       
       <%= f.hidden_field :start_time, :value => params[:date] %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
 
-      <%= f.submit "予定の作成", class: "btn btn-primary" %>
+      <%= f.submit "スケジュールの作成", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
