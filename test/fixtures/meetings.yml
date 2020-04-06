@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+scheduleone:
+  title: OneTitle
+  user: 加川　拓也
+  start_time: 2020-04-02 07:39:32
+  content: ExampleText
+
+two:
+  title: MyText
+  user: 加川　拓也
+  start_time: 2020-04-03 07:39:32
+  content: MyText
