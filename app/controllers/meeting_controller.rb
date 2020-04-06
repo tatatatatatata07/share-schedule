@@ -8,7 +8,6 @@ class MeetingController < ApplicationController
   
   def index
     @meetings = Meeting.all
-    @me = Meeting.paginate(page: params[:page], per_page: 5)
   end
   
   def create

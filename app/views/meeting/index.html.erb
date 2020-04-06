@@ -1,24 +1,30 @@
 <%= week_calendar number_of_weeks: 2 do |date| %>
   <%= link_to date ,"/meeting/#{date}/new" %><br>
   
-  <% @meetings.each do |meeting| %>
+  <!-- カレンダーの各日のレコードをページネーションを使って取得 -->
+  <!-- パラメータからdateを受け取ることで日付事のページ番号を受け取る -->
+  <% meetings =  Meeting.where( "start_time like '%#{date.year}%#{date.month}%#{date.day}%'").paginate(page: params[:"#{date}"], per_page: 3) %>
+  
+  <% meetings.each do |meeting| %>
 
-  
-  <% if meeting.start_time.year == date.year %>
-  <% if meeting.start_time.month == date.month %>
-  <% if meeting.start_time.day == date.day %>
-  
     <span class="user">
       <%= link_to meeting.user.name, meeting.user %>
     </span>
     <span class="content">
       <%= meeting.title %>
     </span>
-
-  <% end %>
-  <% end %>
+    
   <% end %>
   
-  <% end %>
-  <%= will_paginate @me, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+<!--　param_name: "#{date}"で日付事のページ番号をパラメータに追加  -->
+<%= will_paginate meetings, :previous_label => ' &lt ', :next_label => ' &gt',
+    inner_window: 0, outer_window: 0 ,param_name: "#{date}" %>  
+    
+
+
+
+
+
+
+  
 <% end %>
