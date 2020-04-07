@@ -1,6 +1,17 @@
 <% provide(:first_title, "ログイン") %>
 <h1>ログイン</h1>
 
+<h2>サンプルアカウント</h2>
+<li>管理者ユーザー</li>
+<ul>名前：加川　拓也</ul>
+<ul>メールアドレス：kagawa@example.com</ul>
+<ul>パスワード：pass-word</ul>
+
+<li>一般ユーザー</li>
+<ul>名前：山田　一郎</ul>
+<ul>メールアドレス：yamada@example.com</ul>
+<ul>パスワード：pass-word</ul>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
