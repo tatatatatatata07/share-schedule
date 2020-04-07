@@ -1,13 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-scheduleone:
-  title: OneTitle
-  user: 加川　拓也
+one:
+  title: One
+  user: test_user
   start_time: 2020-04-02 07:39:32
   content: ExampleText
 
 two:
-  title: MyText
-  user: 加川　拓也
-  start_time: 2020-04-03 07:39:32
+  title: two
+  user: test_user
+  start_time: <%= DateTime.now %>
   content: MyText
+
+three:
+  title: three
+  user: test_jiro
+  start_time: 2020-04-04 07:39:32
+  content: Test
+  
+<% 10.times do |n| %>
+meeting_<%= n %>:
+  title: test
+  user: test_jiro
+  start_time: <%= DateTime.now %>
+  content: MyText
+<% end %>

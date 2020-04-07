@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MeetingControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @meeting = meetings(:scheduleone)
+    @meeting = meetings(:one)
   end
 
   test "ログインしていないとスケジュールの登録ができないことをテスト" do
@@ -21,5 +21,14 @@ class MeetingControllerTest < ActionDispatch::IntegrationTest
       delete meeting_path(@meeting)
     end
     assert_redirected_to login_url
+  end
+  
+  test "管理者以外のユーザーは自分のスケジュール以外削除できないことをテスト" do
+    log_in_as(users(:test_jiro))
+    meeting = meetings(:one)
+    assert_no_difference 'Meeting.count' do
+      delete meeting_path(meeting)
+    end
+    assert_redirected_to root_url
   end
 end

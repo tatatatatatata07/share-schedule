@@ -46,6 +46,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def feed
+    Meeting.where("user_id = ?", id)
+  end
+  
   private
 
     def user_params
