@@ -109,7 +109,7 @@ input {
   }
 }
 
-/* ミーティングフォーム */
+/* スケジュールフォーム */
 .content {
   display: block;
   margin-left: 60px;
@@ -117,4 +117,42 @@ input {
     display: block;
     padding: 5px 0;
   }
+}
+
+/* スケジュールレイアウト */
+.schedule_date{
+  font-size: 2em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  background-color: skyblue;
+  color: black;
+  text-align: center;
+  border-bottom: solid 4px skyblue;
+  a {
+    color: #333333;
+  }
+}
+
+.schedule_detail{
+  border-bottom: solid 2px gray;
+  padding-bottom: 10px;
+}
+
+.schedule_title{
+  font-size: 1.3em;
+  text-align: center;
+  background-color: brown;
+  a{
+    color: white;
+  }
+}
+
+.schedule_user{
+  font-size: 0.8em;
+  text-align: right;
+}
+
+.schedule_time{
+  font-size: 1.3em;
+  text-align: center;
 }

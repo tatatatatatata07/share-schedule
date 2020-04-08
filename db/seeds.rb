@@ -1,4 +1,4 @@
-User.create!(name:  "加川　拓也",
+User.create!(name:  "加川 拓也",
              email: "kagawa@example.com",
              password:              "pass-word",
              password_confirmation: "pass-word",
@@ -6,7 +6,7 @@ User.create!(name:  "加川　拓也",
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "山田　一郎",
+User.create!(name:  "山田 一郎",
              email: "yamada@example.com",
              password:              "pass-word",
              password_confirmation: "pass-word",
@@ -30,5 +30,5 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.meeting.create!(
       content: Faker::Lorem.sentence(word_count: 3), 
       title: Faker::Lorem.word, 
-      start_time: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 30)) }
+      start_time: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 30).to_s[0,10] + " " + rand(0..23).to_s + ":" + (rand(0..5) * 10).to_s )}
 end
