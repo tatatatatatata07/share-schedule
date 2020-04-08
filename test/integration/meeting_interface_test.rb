@@ -11,22 +11,23 @@ class MeetingInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     # 無効なパラメータを送信
     assert_no_difference 'Meeting.count' do
-      post schedule_path, params: { meeting: { content: "", title: "", start_time: DateTime.now} }
+      post schedule_path, params: { meeting: { content: "", title: "", start_date: DateTime.now.to_s[0,10], start_hour: "0", start_minute: "0"} }
     end
     assert_select 'div#error_explanation'
     # 有効なパラメータを送信
     title = "テスト"
     content = "テスト"
-    start_time = DateTime.now
+    start_date = DateTime.now.to_s[0,10]
+    start_hour = "10"
+    start_minute = "10"
     assert_difference 'Meeting.count', 1 do
-      post schedule_path, params: { meeting: { title: title, content: content, start_time: start_time } }
+      post schedule_path, params: { meeting: { title: title, content: content, start_date: start_date, start_hour: start_hour, start_minute: start_minute } }
     end
     #debugger
     #時間区切りができていないため未実装 もとのカレンダーの月へもどる
     #assert_redirected_to meeting_index_path
     follow_redirect!
-    #時間区切りができていないため未実装
-    #assert_match title, response.body
+    assert_match title, response.body
     
     # スケジュールの削除
     assert_select 'a', text: '削除'
