@@ -8,15 +8,11 @@
   <% meetings.each do |meeting| %>
     <div class="schedule_detail">
       <div class="schedule_title">
-        <p><%= link_to meeting.title, "#" %></p>
+        <p><%= link_to meeting.title, meeting %></p>
       </div>
       <p class="schedule_time"><%= meeting.start_time.to_s[11,5] %></p>
       <p class="schedule_user">
         <%= link_to meeting.user.name, meeting.user %> さん</br>
-        <% if current_user?(meeting.user) || current_user.admin? %>
-          <%= link_to "削除", meeting, method: :delete,
-                                         data: { confirm: "本当に削除しますか？" } %></br>
-        <% end %>
       </p>
     </div>
   <% end %>

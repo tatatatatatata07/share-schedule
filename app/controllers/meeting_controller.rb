@@ -3,19 +3,20 @@ class MeetingController < ApplicationController
   before_action :correct_or_admin_user,   only: :destroy
   before_action :mix_time, only: :create
   
-  def new
-    @meeting = Meeting.new
-  end
-  
   def index
     if logged_in?
      # @micropost  = current_user.microposts.build
       #@feed_items = current_user.feed.paginate(page: params[:page])
     end
     @meetings = Meeting.all
-    if flash[:create_meeting]
-      
-    end
+  end
+  
+  def show
+    @meeting = Meeting.find(params[:id])
+  end
+  
+  def new
+    @meeting = Meeting.new
   end
   
   def create
@@ -46,7 +47,7 @@ class MeetingController < ApplicationController
   def destroy
     @meeting.destroy
     flash[:success] = "#{@meeting.start_time.month}月#{@meeting.start_time.day}日のスケジュール「#{@meeting.title}」を削除しました"
-    redirect_to request.referrer || root_url
+    redirect_to meeting_index_path
   end
 
   private
