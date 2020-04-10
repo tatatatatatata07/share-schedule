@@ -2,10 +2,11 @@ require 'test_helper'
 
 class MeetingInterfaceTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:test_user)
+    @user = users(:test_jiro)
+    @admin_user = users(:test_user)
   end
 
-  test "みんなのスケジュールのインターフェーステスト" do
+  test "通常ユーザーのみんなのスケジュールのインターフェーステスト" do
     log_in_as(@user)
     get meeting_index_path
     assert_select 'div.pagination'
@@ -23,20 +24,52 @@ class MeetingInterfaceTest < ActionDispatch::IntegrationTest
     assert_difference 'Meeting.count', 1 do
       post schedule_path, params: { meeting: { title: title, content: content, start_date: start_date, start_hour: start_hour, start_minute: start_minute } }
     end
-    #debugger
-    #時間区切りができていないため未実装 もとのカレンダーの月へもどる
-    #assert_redirected_to meeting_index_path
     follow_redirect!
     assert_match title, response.body
-    
-    # スケジュールの削除
-    assert_select 'a', text: '削除'
+    # スケジュールの詳細ページの表示
     first_meeting = @user.meeting.first
+    other_meeting = @admin_user.meeting.first
+    #自分が作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
+    #自分のミーティングは削除できることを確認
+    get meeting_path(first_meeting)
+    assert_select 'a', text: '編集'
+    assert_select 'a', text: '削除'
     assert_difference 'Meeting.count', -1 do
       delete meeting_path(first_meeting)
     end
-    # 違うユーザーのプロフィールにアクセス (削除リンクがないことを確認) 未実装
-    #get user_path(users(:archer))
-    #assert_select 'a', text: 'delete', count: 0
+    #違うユーザーが作成したミーティングの詳細ページに「編集」「削除」リンクがないことを確認
+    #違うユーザーのミーティングは削除できないことを確認
+    get meeting_path(other_meeting)
+    assert_select 'a', text: '削除', count: 0
+    assert_select 'a', text: '編集', count: 0
+    assert_difference 'Meeting.count', 0 do
+      delete meeting_path(other_meeting)
+    end
   end
+  
+  test "管理者権限ユーザーのみんなのスケジュールのインターフェーステスト" do
+    log_in_as(@admin_user)
+    get meeting_index_path
+    
+    admin_meeting = @admin_user.meeting.first    
+    non_admin_meeting = @user.meeting.first
+    
+    #自分が作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
+    #自分が作成したミーティングは削除できることを確認
+    get meeting_path(admin_meeting)
+    assert_select 'a', text: '編集'
+    assert_select 'a', text: '削除'
+    assert_difference 'Meeting.count', -1 do
+      delete meeting_path(admin_meeting)
+    end
+    #違うユーザーが作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
+    #管理者ユーザーは他人のミーティングを削除できることを確認
+    get meeting_path(non_admin_meeting)
+    assert_select 'a', text: '編集'
+    assert_select 'a', text: '削除'
+    assert_difference 'Meeting.count', -1 do
+      delete meeting_path(non_admin_meeting)
+    end
+  end
+  
 end

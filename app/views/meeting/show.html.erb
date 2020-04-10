@@ -1,0 +1,17 @@
+<% provide(:first_title, @meeting.title) %>
+
+<h1><%= @meeting.title %></h1>
+<div class="schedule_show">
+  <h2>スケジュール日程</h2>
+  <p><%= @meeting.start_time.month %> 月 <%= @meeting.start_time.day %> 日 <%= @meeting.start_time.hour %> 時 <%= @meeting.start_time.to_s[14,2] %> 分 </p>
+  <h2>スケジュール作成者</h2>
+  <p><%= @meeting.user.name %></p>
+  <h2>スケジュール詳細</h2>
+  <p><%= @meeting.content %></p>
+  <% if current_user?(@meeting.user) || current_user.admin? %>
+            <%= link_to "編集", @meeting, method: :delete,
+                                           data: { confirm: "本当に削除しますか？" } %>
+            <%= link_to "削除", @meeting, method: :delete,
+                                           data: { confirm: "本当に削除しますか？" } %></br>
+  <% end %>
+</div>

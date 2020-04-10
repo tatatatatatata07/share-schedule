@@ -156,3 +156,19 @@ input {
   font-size: 1.3em;
   text-align: center;
 }
+
+/* スケジュール詳細レイアウト */
+
+.schedule_show{
+  h2{
+    font-size: 1.5em;
+  }
+  p{
+    font-size: 1.3em;
+    text-align: center;
+  }
+  a{
+    display: block;
+    text-align: center;
+  }
+}
