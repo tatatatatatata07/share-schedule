@@ -8,10 +8,16 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get    '/meeting/:date/new',to:'meeting#new'
   post   '/schedule',to: 'meeting#create'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :meeting
+  resources :relationships,       only: [:create, :destroy]
   
 end

@@ -77,4 +77,33 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.authenticated?(:remember, '')
   end
   
+  test "フォローの付け外しが正常に機能していることをテスト" do
+    test_jiro = users(:test_jiro)
+    test_saburo  = users(:test_saburo)
+    assert_not test_jiro.following?(test_saburo)
+    test_jiro.follow(test_saburo)
+    assert test_jiro.following?(test_saburo)
+    assert test_saburo.followers.include?(test_jiro)
+    test_jiro.unfollow(test_saburo)
+    assert_not test_jiro.following?(test_saburo)
+  end
+  
+  test "フィードが正しいユーザーのmeetingを持っていることをテスト" do
+    test_user = users(:test_user)
+    test_jiro  = users(:test_jiro)
+    test_saburo    = users(:test_saburo)
+    # フォローしているユーザーの投稿を確認
+    test_saburo.meeting.each do |meeting_following|
+      assert test_user.feed.include?(meeting_following)
+    end
+    # 自分自身の投稿を確認
+    test_user.meeting.each do |meeting_self|
+      assert test_user.feed.include?(meeting_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    test_jiro.meeting.each do |meeting_unfollowed|
+      assert_not test_user.feed.include?(meeting_unfollowed)
+    end
+  end
+  
 end

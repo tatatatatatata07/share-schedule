@@ -1,5 +1,34 @@
 <% provide(:first_title, @user.name + " さんのスケジュール") %>
-<h1>
-  <%= @user.name + " さんのスケジュール" %>
-</h1>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+  <%= render 'follow_form' if logged_in? %>
+    <h2><%= @user.name + " さんのスケジュール" %></h2>
+    
+    <%= week_calendar number_of_weeks: 1 do |date| %>
+      <div class="schedule_date"><%= link_to "#{date.month} / #{date.day}" ,"/meeting/#{date}/new" %></div>
+    
+      <!-- カレンダーの各日のレコードをページネーションを使って取得 -->
+      <!-- パラメータからdateを受け取ることで日付事のページ番号を受け取る -->
+      <% @meetings =  @user.own_feed.where( "start_time LIKE ?" , "#{date.to_s}%").paginate(page: params[:"#{date}"], per_page: 3) %>
+      
+      <%= render 'shared/calender' %>
+      
+      <!--　param_name: "#{date}"で日付事のページ番号をパラメータに追加  -->
+      <%= will_paginate @meetings, :previous_label => ' &lt ', :next_label => ' &gt',
+          inner_window: 0, outer_window: 0 ,param_name: "#{date}" %>   
+    <% end %>
+    
+    
+  </div>
+</div>
 

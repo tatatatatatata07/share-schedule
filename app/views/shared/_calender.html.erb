@@ -1,0 +1,11 @@
+<% @meetings.each do |meeting| %>
+  <div class="schedule_detail">
+    <div class="schedule_time">
+      <p><%= link_to meeting.start_time.to_s[11,5], meeting %></p>
+    </div>
+    <p class="schedule_title"><%= link_to  meeting.title, meeting %></p>
+    <p class="schedule_user">
+      <%= link_to meeting.user.name, meeting.user %> さん</br>
+    </p>
+  </div>
+<% end %>

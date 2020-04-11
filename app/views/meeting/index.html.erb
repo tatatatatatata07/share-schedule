@@ -3,22 +3,12 @@
 
   <!-- カレンダーの各日のレコードをページネーションを使って取得 -->
   <!-- パラメータからdateを受け取ることで日付事のページ番号を受け取る -->
-  <% meetings =  Meeting.where( "start_time LIKE ?" , "#{date.to_s}%").paginate(page: params[:"#{date}"], per_page: 3) %>
+  <% @meetings =  current_user.feed.where( "start_time LIKE ?" , "#{date.to_s}%").paginate(page: params[:"#{date}"], per_page: 3) %>
   
-  <% meetings.each do |meeting| %>
-    <div class="schedule_detail">
-      <div class="schedule_title">
-        <p><%= link_to meeting.title, meeting %></p>
-      </div>
-      <p class="schedule_time"><%= meeting.start_time.to_s[11,5] %></p>
-      <p class="schedule_user">
-        <%= link_to meeting.user.name, meeting.user %> さん</br>
-      </p>
-    </div>
-  <% end %>
-  
-<!--　param_name: "#{date}"で日付事のページ番号をパラメータに追加  -->
-<%= will_paginate meetings, :previous_label => ' &lt ', :next_label => ' &gt',
-    inner_window: 0, outer_window: 0 ,param_name: "#{date}" %>  
+  <%= render 'shared/calender' %>
+
+  <!--　param_name: "#{date}"で日付事のページ番号をパラメータに追加  -->
+  <%= will_paginate @meetings, :previous_label => ' &lt ', :next_label => ' &gt',
+      inner_window: 0, outer_window: 0 ,param_name: "#{date}" %>    
     
 <% end %>
