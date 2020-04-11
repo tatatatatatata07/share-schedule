@@ -26,7 +26,6 @@ class MeetingController < ApplicationController
       flash[:info] = "#{@meeting.start_time.month}月#{@meeting.start_time.day}日のスケジュールに「#{@meeting.title}」を追加しました"
       
       #createで作られたスケジュールのページネーションのページを検索
-      #時間区切りができていないため未実装
       @page_number = 1
       while @page_number > 0 
       	day_meetings = @meeting.user.feed.where( "start_time LIKE ?", "#{@meeting.start_time.to_s[0,10]}%").paginate(page: @page_number, per_page: 3)

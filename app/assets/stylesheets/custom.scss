@@ -28,10 +28,20 @@ textarea{
   margin-bottom: 10px;
 }
 
-/* typography */
+.app-title{
+  a{
+    font-size: 2em;
+    color: white;
+    
+  }
+}
+
+/* 文章の基本設定 */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
+
 }
 
 h1 {
@@ -53,6 +63,11 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
+}
+
+a{
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' ;
 }
 
 /* フォーム画面 */
@@ -177,7 +192,7 @@ input {
   padding-bottom: 10px;
 }
 
-.schedule_title{
+.schedule_time{
   font-size: 1.3em;
   text-align: center;
   background-color: brown;
@@ -191,9 +206,12 @@ input {
   text-align: right;
 }
 
-.schedule_time{
+.schedule_title{
   font-size: 1.3em;
   text-align: center;
+  a{
+  color: #333333;    
+  }
 }
 
 /* スケジュール詳細レイアウト */

@@ -75,6 +75,10 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
   
+  def own_feed
+    Meeting.where("user_id = ?", id)
+  end
+  
   # ユーザーをフォロー群に追加する
   def follow(other_user)
     following << other_user
