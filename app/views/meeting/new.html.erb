@@ -6,7 +6,7 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@meeting, url: schedule_path) do |f| %>
     
-    <%= render 'shared/error_messages', object: f.object %>
+      <%= render 'shared/error_messages', object: f.object %>
     
       <%= f.label :start_time, "スケジュールの開始時間" %>
       
@@ -36,7 +36,7 @@
     <%= form_for(@meeting, url: schedule_path) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :start_time, "スケジュールの開始時間" %>
+    <%= f.label :start_time, "スケジュールの開始時間" %>
       
       <% hours = (0..23).to_a %>
       <% minutes = (0..5).to_a.map{|minute| minute * 10}  %>

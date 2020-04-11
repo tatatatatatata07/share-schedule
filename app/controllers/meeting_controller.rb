@@ -1,7 +1,7 @@
 class MeetingController < ApplicationController
   before_action :logged_in_user
   before_action :correct_or_admin_user,   only: :destroy
-  before_action :mix_time, only: :create
+  before_action :mix_time, only: [:create, :update]
   
   def index
     if logged_in?
@@ -22,7 +22,6 @@ class MeetingController < ApplicationController
   def create
     @meeting = current_user.meeting.build(meeting_params)
     @meeting.start_time = @start_time
-    #debugger
     if @meeting.save
       flash[:info] = "#{@meeting.start_time.month}月#{@meeting.start_time.day}日のスケジュールに「#{@meeting.title}」を追加しました"
       
@@ -32,15 +31,29 @@ class MeetingController < ApplicationController
       while @page_number > 0 
       	day_meetings = Meeting.where( "start_time LIKE ?", "#{@meeting.start_time.to_s[0,10]}%").paginate(page: @page_number, per_page: 3)
       	if day_meetings.ids.include? @meeting.id
-      	  #debugger
       		break
       	end
       	@page_number = @page_number + 1
       end
-      #flash[:create_meeting] = @meeting 
       redirect_to meeting_index_path("#{@meeting.start_time.to_s[0,10]}": @page_number)
     else
       render 'new'
+    end
+  end
+  
+  def edit
+    @meeting = Meeting.find(params[:id])
+  end
+  
+  def update
+    @meeting = Meeting.find(params[:id])
+    @meeting.start_time = @start_time
+    #debugger
+    if @meeting.update_attributes(meeting_params) && @meeting.update_attributes(start_time: @meeting.start_time)
+      flash[:success] = "変更が完了しました"
+      redirect_to meeting_index_path
+    else
+      render 'edit'
     end
   end
   
