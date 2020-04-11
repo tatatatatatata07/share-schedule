@@ -3,7 +3,7 @@
 one:
   title: One
   user: test_user
-  start_time: 2020-04-02 07:39:32
+  start_time: 2020-04-02 07:30:00
   content: ExampleText
 
 two:
@@ -15,7 +15,7 @@ two:
 three:
   title: three
   user: test_jiro
-  start_time: 2020-04-04 07:39:32
+  start_time: 2020-04-04 07:40:00
   content: Test
   
 <% 10.times do |n| %>

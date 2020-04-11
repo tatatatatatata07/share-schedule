@@ -9,8 +9,7 @@
   <h2>スケジュール詳細</h2>
   <p><%= @meeting.content %></p>
   <% if current_user?(@meeting.user) || current_user.admin? %>
-            <%= link_to "編集", @meeting, method: :delete,
-                                           data: { confirm: "本当に削除しますか？" } %>
+            <%= link_to "編集", edit_meeting_path(@meeting) %>
             <%= link_to "削除", @meeting, method: :delete,
                                            data: { confirm: "本当に削除しますか？" } %></br>
   <% end %>
