@@ -1,3 +1,4 @@
+# ユーザー
 User.create!(name:  "加川 拓也",
              email: "kagawa@example.com",
              password:              "pass-word",
@@ -25,6 +26,7 @@ User.create!(name:  "山田 一郎",
                activated_at: Time.zone.now)
 end
 
+# ミーティング
 users = User.order(:created_at).take(6)
 50.times do
   users.each { |user| user.meeting.create!(
@@ -32,3 +34,11 @@ users = User.order(:created_at).take(6)
       title: Faker::Lorem.word, 
       start_time: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 30).to_s[0,10] + " " + rand(0..23).to_s + ":" + (rand(0..5) * 10).to_s )}
 end
+
+# リレーションシップ
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

@@ -3,7 +3,8 @@
 
   <!-- カレンダーの各日のレコードをページネーションを使って取得 -->
   <!-- パラメータからdateを受け取ることで日付事のページ番号を受け取る -->
-  <% meetings =  Meeting.where( "start_time LIKE ?" , "#{date.to_s}%").paginate(page: params[:"#{date}"], per_page: 3) %>
+  <%# debugger %>
+  <% meetings =  current_user.feed.where( "start_time LIKE ?" , "#{date.to_s}%").paginate(page: params[:"#{date}"], per_page: 3) %>
   
   <% meetings.each do |meeting| %>
     <div class="schedule_detail">

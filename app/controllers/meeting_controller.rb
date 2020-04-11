@@ -29,7 +29,7 @@ class MeetingController < ApplicationController
       #時間区切りができていないため未実装
       @page_number = 1
       while @page_number > 0 
-      	day_meetings = Meeting.where( "start_time LIKE ?", "#{@meeting.start_time.to_s[0,10]}%").paginate(page: @page_number, per_page: 3)
+      	day_meetings = @meeting.user.feed.where( "start_time LIKE ?", "#{@meeting.start_time.to_s[0,10]}%").paginate(page: @page_number, per_page: 3)
       	if day_meetings.ids.include? @meeting.id
       		break
       	end
