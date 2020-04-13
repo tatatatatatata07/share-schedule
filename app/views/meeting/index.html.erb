@@ -1,4 +1,5 @@
-<%= week_calendar number_of_weeks: 2 do |date| %>
+<h2>ここではフォローしたユーザー達のスケジュールをまとめて確認することができます</h2>
+<%= week_calendar number_of_weeks: 1 do |date| %>
   <div class="schedule_date"><%= link_to "#{date.month} / #{date.day}" ,"/meeting/#{date}/new" %></div>
 
   <!-- カレンダーの各日のレコードをページネーションを使って取得 -->

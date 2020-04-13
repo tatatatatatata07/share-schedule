@@ -1,10 +1,14 @@
 <% provide(:first_title, 'ユーザー一覧') %>
 <h1>登録されているユーザーの一覧</h1>
-
-<%= will_paginate %>
+<h2>全てポートフォリオ用のダミーユーザーとなります</h2>
+<div class="user-index-pagination"><%= will_paginate @users, :previous_label => ' 前へ ', :next_label => ' 次へ' %></div>
+<div class="user-index">
 
 <ul class="users">
-  <%= render @users %>
+  <% @users.each do |user| %>
+    <% @user = user %>
+    <%= render 'users/user', user: user %>
+  <% end %>
 </ul>
-
-<%= will_paginate %>
+</div>  
+<div class="user-index-pagination"><%= will_paginate @users, :previous_label => ' 前へ ', :next_label => ' 次へ' %></div>
