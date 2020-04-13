@@ -1,17 +1,22 @@
 <% provide(:first_title, "ログイン") %>
 <h1>ログイン</h1>
 
-<h2>サンプルアカウント</h2>
-<li>管理者ユーザー</li>
-<ul>名前：加川　拓也</ul>
-<ul>メールアドレス：kagawa@example.com</ul>
-<ul>パスワード：pass-word</ul>
-
-<li>一般ユーザー</li>
-<ul>名前：山田　一郎</ul>
-<ul>メールアドレス：yamada@example.com</ul>
-<ul>パスワード：pass-word</ul>
-
+<h2>新規登録せずにサンプルアカウントを使用することも可能です</h2>
+<div class="account-introduce">
+  <ul>
+    <li class="li-column">管理者ユーザー</li>
+    <li class="li-detail">名前：加川 拓也</li>
+    <li class="li-detail">メールアドレス：kagawa@example.com</li>
+    <li class="li-detail">パスワード：pass-word</li>
+    <li class="li-detail">※管理者ユーザーでは全てのユーザーのアカウント及びスケジュールを変更できます</li>
+  </ul>
+  <ul>
+    <li class="li-column">一般ユーザー</li>
+    <li class="li-detail">名前：山田 一郎</li>
+    <li class="li-detail">メールアドレス：yamada@example.com</li>
+    <li class="li-detail">パスワード：pass-word</li>
+  </ul>
+</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
@@ -28,7 +33,7 @@
         <span>パスワードを保存する</span>
       <% end %>
 
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+      <%= f.submit "ログイン", class: "btn btn-secondary" %>
     <% end %>
 
     <p>アカウントをお持ちではないですか？ <%= link_to "今すぐ新規登録", signup_path %></p>

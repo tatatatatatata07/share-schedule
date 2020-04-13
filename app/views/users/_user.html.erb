@@ -1,7 +1,11 @@
 <li>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
+  <%= link_to @user.name, @user %>
+  <% if current_user.admin? && !current_user?(@user) %>
     | <%= link_to "削除", user, method: :delete,
                                   data: { confirm: "本当に削除しますか？" } %>
   <% end %>
+  <div id="user_index_follow_form_<%= user.id %>">
+    <%= render partial: 'users/index_follow_form', locals: { user: user } %>
+  </div>
+  
 </li>

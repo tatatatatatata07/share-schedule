@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 30)
   end
   
   def show
@@ -19,8 +19,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = "ご登録いただいたメールアドレスに送信しました。メールをご確認いただきご登録をお願い致します"
-      redirect_to root_url
+      flash[:info] = "ご登録いただいたメールアドレスに送信しました。メールをご確認いただき、ご登録をお願い致します。"
+      redirect_to login_path
     else
       render 'new'
     end

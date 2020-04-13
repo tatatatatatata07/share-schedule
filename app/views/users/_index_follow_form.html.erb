@@ -1,0 +1,6 @@
+<% if !current_user.following?(@user) && !current_user?(@user)  %>
+    <%= render 'index_follow' %>
+  <% elsif !current_user?(@user) %>
+    <%= render 'index_unfollow' %>
+  <% else %>
+<% end %>

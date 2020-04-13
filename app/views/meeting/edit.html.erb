@@ -1,7 +1,7 @@
 <% provide(:first_title, "スケジュール変更") %>
 
 <h1><%= "スケジュール変更" %></h1>
-<%#@meeting.start_time = nil %>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@meeting) do |f| %>
@@ -9,8 +9,6 @@
       <%= render 'shared/error_messages', object: f.object %>
     
       <%= f.label :start_time, "スケジュールの開始日" %>
-      
-      <%# debugger %>
       
       <div class='input-group date datepicker'>
        <%= f.text_field :start_date, class: 'form-control date-picker' %>
@@ -36,7 +34,7 @@
       <%= f.label :content, "スケジュールの詳細" %>
       <%= f.text_area :content, class: 'form-control' %>
       
-      <%= f.submit "スケジュールの変更", class: "btn btn-primary" %>
+      <%= f.submit "スケジュールの変更", class: "btn btn-secondary" %>
     <% end %>
   </div>
 </div>

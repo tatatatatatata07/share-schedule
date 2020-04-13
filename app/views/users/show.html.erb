@@ -11,8 +11,10 @@
     </section>
   </aside>
   <div class="col-md-8">
-  <%= render 'follow_form' if logged_in? %>
+  
     <h2><%= @user.name + " さんのスケジュール" %></h2>
+    
+    <%= render 'follow_form' if logged_in? %>
     
     <%= week_calendar number_of_weeks: 1 do |date| %>
       <div class="schedule_date"><%= link_to "#{date.month} / #{date.day}" ,"/meeting/#{date}/new" %></div>
