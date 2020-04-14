@@ -13,6 +13,7 @@ module ShareApp
     config . active_record . default_timezone = :local
     # 日本語をデフォルトに設定
     config . i18n . default_locale = :ja
+    config.action_mailer.perform_deliveries = true
     #config . i18n . load_path += Dir [ Rails . root . join ( 'config' , 'locales' , '**' , '*.{rb,yml}' ). to_s ]
     
     # Settings in config/environments/* take precedence over those specified here.
