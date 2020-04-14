@@ -157,6 +157,19 @@ a{
   }
 }
 
+/* 使い方 */
+.using{
+  margin-top: 30px;
+  .top-page-list{
+    li{
+      text-align: left;
+      list-style:  square;
+      padding: 20px 20px;
+      border-bottom: solid 2px #471b1b;
+    }
+  }
+}
+
 /* ログイン画面 */
 .account-introduce{
   width: 40vw;
@@ -379,5 +392,32 @@ input {
   a{
     display: block;
     text-align: center;
+  }
+}
+
+.schedule-detail{
+  .col-md-4{
+    width: 50%;
+      p{
+      text-decoration: underline;
+    }
+  }
+  .col-md-8{
+    width: 50%;
+    padding: 30px 0;
+    a{
+      font-size: 1.5em;
+      color: brown;
+    }
+  }
+  h1{
+    font-size: 2.3em;
+  }
+  p{
+    text-align: center;
+    font-size: 1.5em;
+  }
+  .stats a:first-child{
+    padding-left: 40%;
   }
 }

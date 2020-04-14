@@ -32,16 +32,16 @@ class MeetingInterfaceTest < ActionDispatch::IntegrationTest
     #自分が作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
     #自分のミーティングは削除できることを確認
     get meeting_path(first_meeting)
-    assert_select 'a', text: '編集'
-    assert_select 'a', text: '削除'
+    assert_select 'a', text: '予定を編集する'
+    assert_select 'a', text: '予定を削除する'
     assert_difference 'Meeting.count', -1 do
       delete meeting_path(first_meeting)
     end
     #違うユーザーが作成したミーティングの詳細ページに「編集」「削除」リンクがないことを確認
     #違うユーザーのミーティングは削除できないことを確認
     get meeting_path(other_meeting)
-    assert_select 'a', text: '削除', count: 0
-    assert_select 'a', text: '編集', count: 0
+    assert_select 'a', text: '予定を編集する', count: 0
+    assert_select 'a', text: '予定を削除する', count: 0
     assert_difference 'Meeting.count', 0 do
       delete meeting_path(other_meeting)
     end
@@ -57,16 +57,16 @@ class MeetingInterfaceTest < ActionDispatch::IntegrationTest
     #自分が作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
     #自分が作成したミーティングは削除できることを確認
     get meeting_path(admin_meeting)
-    assert_select 'a', text: '編集'
-    assert_select 'a', text: '削除'
+    assert_select 'a', text: '予定を編集する'
+    assert_select 'a', text: '予定を削除する'
     assert_difference 'Meeting.count', -1 do
       delete meeting_path(admin_meeting)
     end
     #違うユーザーが作成したミーティングの詳細ページに「編集」「削除」リンクがあることを確認
     #管理者ユーザーは他人のミーティングを削除できることを確認
     get meeting_path(non_admin_meeting)
-    assert_select 'a', text: '編集'
-    assert_select 'a', text: '削除'
+    assert_select 'a', text: '予定を編集する'
+    assert_select 'a', text: '予定を削除する'
     assert_difference 'Meeting.count', -1 do
       delete meeting_path(non_admin_meeting)
     end
