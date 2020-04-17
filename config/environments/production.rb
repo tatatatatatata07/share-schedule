@@ -12,6 +12,7 @@ Rails.application.configure do
    authentication:       :plain,
    enable_starttls_auto:  true
   }
+  host = 'share-schedule.com'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   config.action_mailer.perform_caching = false
@@ -42,7 +43,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
