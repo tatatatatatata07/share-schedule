@@ -9,8 +9,8 @@ User.create!(name:  "加川 拓也",
 
 User.create!(name:  "山田 一郎",
              email: "yamada@example.com",
-             password:              "pass-word",
-             password_confirmation: "pass-word",
+             password:              "pass-word2",
+             password_confirmation: "pass-word2",
              activated: true,
              activated_at: Time.zone.now)
 
@@ -27,18 +27,18 @@ User.create!(name:  "山田 一郎",
 end
 
 # ミーティング
-users = User.order(:created_at).take(6)
+users = User.all
 50.times do
   users.each { |user| user.meeting.create!(
       content: Faker::Lorem.sentence(word_count: 3), 
       title: Faker::Lorem.word, 
-      start_time: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 30).to_s[0,10] + " " + rand(0..23).to_s + ":" + (rand(0..5) * 10).to_s )}
+      start_time: Faker::Time.between(from: DateTime.now - 90, to: DateTime.now + 90).to_s[0,10] + " " + rand(0..23).to_s + ":" + (rand(0..5) * 10).to_s )}
 end
 
 # リレーションシップ
 users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+users.each{ |user| 
+    user_sample = User.where.not(id: user.id)
+    following = user_sample.sample(rand(100))
+    following.each { |followed| user.follow(followed) }
+}

@@ -3,7 +3,11 @@
     <div class="schedule_time">
       <p><%= link_to meeting.start_time.to_s[11,5], meeting %></p>
     </div>
-    <p class="schedule_title"><%= link_to  meeting.title, meeting %></p>
+    <% if meeting.title.length > 5 %>
+      <p class="schedule_title"><%= link_to  meeting.title.slice(0,4) + "..", meeting %></p>
+    <% else %>
+      <p class="schedule_title"><%= link_to  meeting.title, meeting %></p>
+    <% end %>
     <p class="schedule_user">
       <%= link_to meeting.user.name, meeting.user %> さん</br>
     </p>
