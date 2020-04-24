@@ -1,13 +1,9 @@
 class MeetingController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_or_admin_user,   only: :destroy
+  before_action :correct_or_admin_user,   only: [:update, :destroy]
   before_action :mix_time, only: [:create, :update]
   
   def index
-    if logged_in?
-     # @micropost  = current_user.microposts.build
-      #@feed_items = current_user.feed.paginate(page: params[:page])
-    end
     @meetings = Meeting.all
   end
   
@@ -47,7 +43,6 @@ class MeetingController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
     @meeting.start_time = @start_time
-    #debugger
     if @meeting.update_attributes(meeting_params) && @meeting.update_attributes(start_time: @meeting.start_time)
       flash[:success] = "変更が完了しました"
       redirect_to meeting_index_path
@@ -87,8 +82,7 @@ class MeetingController < ApplicationController
     end
     
     def mix_time
-      @start_time = params[:meeting][:start_date] + " " + params[:meeting][:start_hour] + ":" + params[:meeting][:start_minute]   
-      #debugger
+      @start_time = params[:meeting][:start_date] + " " + params[:meeting][:start_hour] + ":" + params[:meeting][:start_minute]
     end
     
 end
