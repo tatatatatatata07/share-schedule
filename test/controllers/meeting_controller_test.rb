@@ -3,6 +3,7 @@ require 'test_helper'
 class MeetingControllerTest < ActionDispatch::IntegrationTest
   def setup
     @meeting = meetings(:one)
+    @user = users(:test_user)
   end
 
   test "ログインしていないとスケジュールの登録ができないことをテスト" do
