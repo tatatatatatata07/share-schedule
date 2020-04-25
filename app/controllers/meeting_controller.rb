@@ -74,7 +74,6 @@ class MeetingController < ApplicationController
       else
         @meeting = Meeting.find_by(id: params[:id])
       end
-
     end
     
     def admin_user
