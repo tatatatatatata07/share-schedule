@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TopPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
+  test "ルートへのgetリクエストが成功することをテスト" do
     get root_path
     assert_response :success
   end
