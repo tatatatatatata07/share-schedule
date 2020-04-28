@@ -28,10 +28,11 @@ end
 
 # ミーティング
 users = User.all
+titles = ["社内会議","外出","打合せ","ミーティング","荷物搬入予定","報告日","説明会","資料作成","ゴミ捨て","OJT","教育","休暇","有給休暇","早退予定","遅刻予定","帰社","歓迎会","月次作業","資料締切日","新入社員歓迎会"]
 50.times do
   users.each { |user| user.meeting.create!(
       content: Faker::Lorem.sentence(word_count: 3), 
-      title: Faker::Lorem.word, 
+      title: titles.sample, 
       start_time: Faker::Time.between(from: DateTime.now - 90, to: DateTime.now + 90).to_s[0,10] + " " + rand(0..23).to_s + ":" + (rand(0..5) * 10).to_s )}
 end
 
