@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :mix_name,       only: [:create, :update]
   
   def index
     @users = User.paginate(page: params[:page], per_page: 30)
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    @user.name = @name
     if @user.save
       @user.send_activation_email
       flash[:info] = "ご登録いただいたメールアドレスに送信しました。メールをご確認いただき、ご登録をお願い致します。"
@@ -32,7 +34,8 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    @user.name = @name
+    if @user.update_attributes(user_params) && @user.update_attributes(name: @user.name)
       flash[:success] = "変更が完了しました"
       redirect_to @user
     else
@@ -78,6 +81,10 @@ class UsersController < ApplicationController
     
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+    
+    def mix_name
+      @name = params[:user][:first_name] + " " + params[:user][:last_name]
     end
     
 end
