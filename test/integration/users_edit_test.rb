@@ -10,7 +10,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
-    patch user_path(@user), params: { user: { name:  "",
+    patch user_path(@user), params: { user: { first_name:  "",
+                                              last_name: "",
                                               email: "foo@invalid",
                                               password:              "foo",
                                               password_confirmation: "bar" } }
@@ -22,16 +23,18 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_url(@user)
-    name  = "test_user2"
+    first_name  = "test"
+    last_name = "user2"
     email = "xyz@example.com"
-    patch user_path(@user), params: { user: { name:  name,
+    patch user_path(@user), params: { user: { first_name:  first_name,
+                                              last_name: last_name,
                                               email: email,
                                               password:              "",
                                               password_confirmation: "" } }
     assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
-    assert_equal name,  @user.name
+    assert_equal "test user2",  @user.name
     assert_equal email, @user.email
   end
   

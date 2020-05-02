@@ -9,7 +9,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "ユーザー登録画面で無効なユーザー名を入力したときにユーザーが作成されないことをテスト" do
     get signup_path
     assert_no_difference 'User.count' do
-      post users_path, params: { user: { name:  "",
+      post users_path, params: { user: { first_name:  "",
+                                         last_name: "",
                                          email: "user@invalid",
                                          password:              "foo",
                                          password_confirmation: "bar" } }
@@ -22,8 +23,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "ユーザー登録画面で有効なユーザー名を入力したときにユーザーが作成されないことをテスト" do
     get signup_path
     assert_difference 'User.count', 1 do
-      post users_path, params: { user: { name:  "Example User",
-                                         email: "user@example.com",
+      post users_path, params: { user: { first_name:  "Example",
+                                         last_name:   "User",
+                                         email:       "user@example.com",
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
