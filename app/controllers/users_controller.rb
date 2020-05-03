@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :mix_name,       only: [:create, :update]
   
   def index
-    @users = User.paginate(page: params[:page], per_page: 30)
+    @users = User.where(activated: true).paginate(page: params[:page], per_page: 30)
   end
   
   def show
