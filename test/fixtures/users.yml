@@ -27,6 +27,13 @@ test_siro:
   activated: true
   activated_at: <%= Time.zone.now %>
   
+test_goro:
+  name: Test Goro
+  email: goro@example.com
+  password_digest: <%= User.digest('password') %>
+  activated: false
+  activated_at: nil
+
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
