@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200411043217) do
+ActiveRecord::Schema.define(version: 20200508044411) do
 
   create_table "meetings", force: :cascade do |t|
     t.text "title"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 20200411043217) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_expires_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
