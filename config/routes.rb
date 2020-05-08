@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get    '/meeting/:date/new',to:'meeting#new'
   post   '/schedule',to: 'meeting#create'
+  get '/auth/:provider/callback',    to: 'users#facebook_login',      as: :auth_callback
+  get '/auth/failure',               to: 'users#auth_failure',        as: :auth_failure
   resources :users do
     member do
       get :following, :followers
