@@ -18,8 +18,18 @@ class User < ApplicationRecord
                     length: { maximum: 255 },
                     format: { with: EMAIL_FORMAT },
                     uniqueness: { case_sensitive: false }
-  has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true, on: :facebook_login
+  
+  #facebook認証でパスワードのバリデーションをパスする必要があるため、:createと:updateのみバリデーションをかけるようhas_secure_passwordメソッドを改修
+  has_secure_password validations: false
+  
+  validate(on: [:create, :update]) do |record|
+    record.errors.add(:password, :blank) unless record.password_digest.present?
+  end
+  
+  validates_length_of :password, maximum: ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED, on: [:create, :update]
+  validates_confirmation_of :password, allow_blank: true, on: [:create, :update]
+  
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true, on: [:create, :update]
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -70,6 +70,7 @@ class UsersController < ApplicationController
   #facebook認証の処理
   def facebook_login
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    #debugger
     result = @user.save(context: :facebook_login)
     if result
       log_in @user
