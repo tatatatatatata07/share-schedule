@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      meeting: ミーティング
     attributes:
       user:
         id: ID
@@ -11,10 +12,6 @@ ja:
         birthday: 生年月日
         email: メールアドレス
         password: パスワード
-        
-    models:
-      meeting: ミーティング
-    attributes:
       meeting:
         id: ID
         title: タイトル
