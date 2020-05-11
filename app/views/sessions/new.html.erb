@@ -1,22 +1,5 @@
 <% provide(:first_title, "ログイン") %>
 <h1>ログイン</h1>
-
-<h2>新規登録せずにサンプルアカウントを使用することも可能です</h2>
-<div class="account-introduce">
-  <ul>
-    <li class="li-column">管理者ユーザー</li>
-    <li class="li-detail">名前：加川 拓也</li>
-    <li class="li-detail">メールアドレス：kagawa@example.com</li>
-    <li class="li-detail">パスワード：pass-word</li>
-    <li class="li-detail">※管理者ユーザーでは全てのユーザーのアカウント及びスケジュールを変更できます</li>
-  </ul>
-  <ul>
-    <li class="li-column">一般ユーザー</li>
-    <li class="li-detail">名前：山田 一郎</li>
-    <li class="li-detail">メールアドレス：yamada@example.com</li>
-    <li class="li-detail">パスワード：pass-word2</li>
-  </ul>
-</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
@@ -42,4 +25,15 @@
 
 <div id="social-platforms">
   <a class="btn btn-icon btn-facebook" href="/auth/facebook"><i class="fa fa-facebook"></i><span>Facebookでログイン</span></a>
+</div>
+
+<h2>以下は管理者用サンプルアカウントです<br>
+    ※管理者ユーザーでは全てのユーザーのアカウント及びスケジュールを変更・削除できます</h2>
+<div class="account-introduce">
+  <ul>
+    <li class="li-column">管理者ユーザー</li>
+    <li class="li-detail">名前：加川 拓也</li>
+    <li class="li-detail">メールアドレス：kagawa@example.com</li>
+    <li class="li-detail">パスワード：pass-word</li>
+  </ul>
 </div>

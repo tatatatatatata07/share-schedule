@@ -29,6 +29,8 @@
           </li>
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
+          <li><%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post %></li>
+          <li><%= link_to "アカウント新規作成", new_user_path %></li>
         <% end %>
       </ul>
     </nav>
