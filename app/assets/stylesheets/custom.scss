@@ -131,6 +131,7 @@ a{
   }
   h2{
     padding-bottom: 20px;
+    line-height: 2em;
   }
   p{
     width: 45vw;
@@ -447,7 +448,7 @@ body {
   position:relative;
   font-size:1rem;
   text-align:center;
-  height:250px;
+  height:100px;
   overflow:hidden;
 }
 
@@ -528,3 +529,10 @@ body {
   background:#3b5998
 }
 
+.emphasize{
+  background: orange;
+}
+
+.emphasize:hover{
+  background-color: DarkOrange;
+}

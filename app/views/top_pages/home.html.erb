@@ -1,8 +1,13 @@
 <div class="center top-page">
-    <h1>シェアスケジュールへようこそ！</h1>
-    <h2>シェアスケジュールではフォローしたユーザーのスケジュールを見ることができます<br>
-        本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しています</h2>
-    
+    <h1>お忙しい中、ポートフォリオをご覧いただき<br>
+        誠にありがとうございます</h1>
+    <h2>当ポートフォリオ『シェアスケジュール』はフォローしたユーザーのスケジュールをまとめて確認できる<br>
+        ウェブアプリケーションです。<br>
+    <h2>是非、下記『お試しログイン』よりアプリケーションをご使用ください。<br>
+    <%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post ,class: "btn btn-lg btn-secondary emphasize" %></h2>
+
+    <h2>なお、本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しております。</h2>
+    <p>本アプリケーションの機能及び構成</p>
     <p>本アプリケーションの使用手順</p>
     <ol class="top-page-list">
         <li>&#9312; 下記のアカウント作成ボタンをクリックしアカウントを作成します</li>
