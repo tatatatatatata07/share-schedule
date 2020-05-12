@@ -532,7 +532,35 @@ body {
 .emphasize{
   background: orange;
 }
-
 .emphasize:hover{
   background-color: DarkOrange;
+}
+.least{
+  background: skyblue;
+}
+.least:hover{
+  background-color: blue;
+}
+
+/* お試しユーザー用 */
+.explain-text{
+  background-color: white;
+  width: 50%;
+  p{
+    color: black;
+    font-size: 3em;
+    text-align: center;
+  }
+  h2{
+    color: black;
+    line-height: 2em;
+  }
+  border: solid;
+  margin: auto;
+  .btn{
+    display: block;
+    width: 170px;
+    margin: auto;
+    margin-bottom: 5px;
+  }
 }

@@ -1,6 +1,18 @@
 <% provide(:first_title, 'ユーザー一覧') %>
 <h1>登録されているユーザーの一覧</h1>
-<h2>全てポートフォリオ用のダミーユーザーとなります</h2>
+
+<% if trial_user? %>
+  <div class="explain-text">
+  <p>手順(1/4)</p>
+  <h2>以下のユーザーからいくつかフォローをお願いいたします<br>
+      ユーザーはポートフォリオ用のダミーユーザーとなります<br>
+      いくつかフォローができましたら「次へすすむ」をクリックしてください</h2>
+      <%= link_to "次へすすむ", meeting_index_path, class: "btn btn-lg btn-secondary emphasize" %>
+   </div>
+<% else %>
+  <h2>全てポートフォリオ用のダミーユーザーとなります</h2>
+<% end %>
+
 <div class="user-index-pagination"><%= will_paginate @users, :previous_label => ' 前へ ', :next_label => ' 次へ' %></div>
 <div class="user-index">
 
