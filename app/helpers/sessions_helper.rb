@@ -30,6 +30,10 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  def trial_user?
+    current_user.email == "gest@example.com"
+  end
+  
   def forget(user)
     user.forget
     cookies.delete(:user_id)

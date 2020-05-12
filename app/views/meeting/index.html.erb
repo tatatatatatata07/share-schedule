@@ -1,4 +1,17 @@
-<h2>ここではフォローしたユーザー達のスケジュールをまとめて確認することができます</h2>
+<% if trial_user? %>
+  <div class="explain-text">
+    <p>手順(2/4)</p>
+    <h2>下のカレンダーにフォローしたユーザーのスケジュールが表示されました<br>
+        次は今日の自分のスケジュールを作成します<br>
+        「次へすすむ」をクリックしてください</h2>
+     <%= link_to "次へすすむ", new_meeting_path(date: Date.today) , class: "btn btn-lg btn-secondary emphasize" %>
+     <%= link_to "前へもどる", users_path, class: "btn btn-lg btn-secondary least" %>
+   </div>
+<% else %>
+  <h2>ここではフォローしたユーザー達のスケジュールをまとめて確認することができます</h2>
+  <h2>日付をクリックすると新しいスケジュールを作成できます</h2>
+<% end %>
+
 <%= week_calendar number_of_weeks: 1 do |date| %>
   <div class="schedule_date"><%= link_to "#{date.month} / #{date.day}" ,"/meeting/#{date}/new" %></div>
 

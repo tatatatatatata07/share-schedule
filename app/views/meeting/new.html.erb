@@ -1,4 +1,18 @@
 <% provide(:first_title, "スケジュールの登録") %>
+
+<% if trial_user? %>
+  <div class="explain-text">
+    <p>手順(3/4)</p>
+    <h2>『スケジュール開始時間』を選び<br>
+        『タイトル』及び『スケジュール詳細』を入力してください<br>
+        入力が完了したら『スケジュールの作成』ボタンをクリックします</h2>
+    <h2>※お試しログインのユーザーはログアウト時にデータが削除されます</h2> 
+    <%= link_to "前へもどる",  meeting_index_path, class: "btn btn-lg btn-secondary least" %>
+  </div>
+<% else %>
+  <h2>全てポートフォリオ用のダミーユーザーとなります</h2>
+<% end %>
+
 <!--　createアクションが失敗して再表示された場合　-->
 <% if !@meeting.user_id.nil? %>
   <h1><%= @meeting.start_time.month %> 月 <%= @meeting.start_time.day %> 日 のスケジュール作成</h1>
