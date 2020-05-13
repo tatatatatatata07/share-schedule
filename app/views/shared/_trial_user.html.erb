@@ -1,0 +1,15 @@
+<% if logged_in? && trial_user? && !current_user.meeting.empty? %>
+  <div class="explain-text">
+    <p>手順(4/4)</p>
+    <h2>ここまでご覧いただきありがとうございました</h2>
+    <h2>スケジュールの表示が完了いたしました<br>
+        当ポートフォリオのおおまかな機能紹介は以上となります</h2>
+    <h2>その他にもユーザー登録やスケジュールの変更機能などがございます<br>
+        引き続き他の機能をご覧になられる場合は下記ボタンから<br>
+        アカウント作成をクリックし、アカウントを作成してください</h2>
+    <h2>※以下のいずれかのボタンをクリックで<br>
+         ここまで入力したデータが破棄されます</h2>
+     <%= link_to "アカウントを作成",  using_path, class: "btn btn-lg btn-secondary" %>
+     <%= link_to "ログアウト", logout_path, class: "btn btn-lg btn-secondary logout" %>
+   </div>
+<% end %>

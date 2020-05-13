@@ -1,15 +1,23 @@
 <div class="center top-page">
     <h1>お忙しい中、ポートフォリオをご覧いただき<br>
         誠にありがとうございます</h1>
-    <h2>当ポートフォリオ『シェアスケジュール』はフォローしたユーザーのスケジュールをまとめて確認できる<br>
-        ウェブアプリケーションです。<br>
-    <h2>是非、下記『お試しログイン』よりアプリケーションをご使用ください。<br>
-        ※お試しログインで入力した内容はログアウト時に全て削除されます
-    <%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post ,class: "btn btn-lg btn-secondary emphasize" %></h2>
+    <p>当ポートフォリオ『シェアスケジュール』はフォローしたユーザーのスケジュールをまとめて確認できる<br>
+        ウェブアプリケーションです。</p>
+    <p><span class="emphasize-text">是非、下記『お試しログイン』よりアプリケーションをご使用ください。</span></p>
 
-    <h2>なお、本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しております。</h2>
-    <p>本アプリケーションの機能及び構成</p>
-    <p>本アプリケーションの使用手順</p>
+    <%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post ,class: "btn btn-lg btn-secondary emphasize" %>
+    <p>※お試しログインで入力した内容はログアウト時に全て削除されます<br>
+    　本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しております。</p>
+    <h2>本アプリケーションの機能</h2>
+    <ol class="top-page-list">
+        <li>&#9312; ユーザー登録/編集機能 <br>※Session&Cookieの学習のためdevice gemは使用しておりません</li>
+        <li>&#9313; お試しログイン機能 Facebookログイン機能<br>※device gemを使用しないFacebook認証を実装しております</li>
+        <li>&#9314; ユーザーのフォロー/アンフォロー機能<br>※Ajaxを使用したことで複数名のフォロー/アンフォローの操作がスムーズで</li>
+        <li>&#9315; スケジュールの登録/編集/削除機能<br>※simple calendar gem を使用</li>
+        <li>&#9316; フォローしたユーザーのスケジュールを確認する機能</li>
+    </ol>
+    <h2>本アプリケーションの構成</h2>
+    <h2>開発環境</h2>
     <ol class="top-page-list">
         <li>&#9312; 下記のアカウント作成ボタンをクリックしアカウントを作成します</li>
         <li>&#9313; tayejiachuan@gmail.com よりアカウントアクティベーション依頼のメールが届きます</li>
@@ -19,5 +27,4 @@
     </ol>
     
     <%= link_to "アカウントを作成する", new_user_path ,class: "btn btn-lg btn-secondary" %>
-    <h2><%= link_to "使い方を見る", using_path %></h2>
 </div>
