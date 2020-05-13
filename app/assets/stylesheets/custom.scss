@@ -129,11 +129,16 @@ a{
   h1{
     padding-top: 50px;
   }
-  h2{
+  p{
     padding-bottom: 20px;
     line-height: 2em;
+    font-size: 1.3em;
   }
-  p{
+  .emphasize-text{
+      font-style: bold;
+      font-size: 1.5em;
+  }
+  h2{
     width: 45vw;
     margin: auto;
     margin-bottom: 20px;
@@ -143,7 +148,7 @@ a{
   }
   .top-page-list{
     margin: auto;
-    width: 45vw;
+    width: 55vw;
   }
   ol  {
     margin: 0;
@@ -155,7 +160,9 @@ a{
     list-style: none;
     padding-left: 1.3em;
     text-indent: -1.3em;
-    line-height: 2em; 
+    line-height: 1.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
   a{
     margin-top: 20px;
@@ -540,6 +547,12 @@ body {
 }
 .least:hover{
   background-color: blue;
+}
+.logout{
+  background: red;
+}
+.logout:hover{
+  background-color: red;
 }
 
 /* お試しユーザー用 */

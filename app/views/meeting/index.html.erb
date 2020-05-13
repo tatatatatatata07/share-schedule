@@ -1,4 +1,4 @@
-<% if trial_user? %>
+<% if trial_user? && current_user.meeting.empty? %>
   <div class="explain-text">
     <p>手順(2/4)</p>
     <h2>下のカレンダーにフォローしたユーザーのスケジュールが表示されました<br>

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     #簡単ログイン対応
-    if user.email == "gest@example.com"
+    if user && user.email == "gest@example.com"
       log_in user
       redirect_to users_path and return
     end
