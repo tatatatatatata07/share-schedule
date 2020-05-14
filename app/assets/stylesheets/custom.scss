@@ -140,11 +140,20 @@ a{
   }
   h2{
     width: 45vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin: auto;
+    margin-top: 80px;
     margin-bottom: 20px;
     font-size: 2.5em;
     background-color: brown;
     color: white;
+  }
+  h3{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    text-align: left;
+    font-size: 2em;
   }
   .top-page-list{
     margin: auto;
@@ -155,14 +164,22 @@ a{
     padding: 0
   }
   ol li  {
-    text-align: left;
+    text-align: center;
     font-size: 1.2em;
     list-style: none;
     padding-left: 1.3em;
     text-indent: -1.3em;
-    line-height: 1.5em;
+    line-height: 2.5em;
     padding-top: 1em;
     padding-bottom: 1em;
+    border-top: solid 2px #471b1b;
+  }
+  .li-strong {
+    font-size: 1.7em;
+    font-style: bold;
+  }
+  .top-list{
+    border: none;
   }
   a{
     margin-top: 20px;
@@ -175,9 +192,8 @@ a{
   .top-page-list{
     li{
       text-align: left;
-      list-style:  square;
+      list-style: none;
       padding: 20px 20px;
-      border-bottom: solid 2px #471b1b;
     }
   }
 }

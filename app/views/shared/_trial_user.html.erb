@@ -10,6 +10,6 @@
     <h2>※以下のいずれかのボタンをクリックで<br>
          ここまで入力したデータが破棄されます</h2>
      <%= link_to "アカウントを作成",  using_path, class: "btn btn-lg btn-secondary" %>
-     <%= link_to "ログアウト", logout_path, class: "btn btn-lg btn-secondary logout" %>
+     <%= link_to "ログアウト", logout_trial_user_path, method: :delete, class: "btn btn-lg btn-secondary logout" %>
    </div>
 <% end %>

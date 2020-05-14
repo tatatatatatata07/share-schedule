@@ -1,6 +1,6 @@
 <% provide(:first_title, "スケジュールの登録") %>
 
-<% if trial_user? %>
+<% if trial_user? && current_user.meeting.empty? %>
   <div class="explain-text">
     <p>手順(3/4)</p>
     <h2>『スケジュール開始時間』を選び<br>

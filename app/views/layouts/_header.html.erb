@@ -26,13 +26,17 @@
               <li><%= link_to "アカウント情報の変更", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", logout_path, method: :delete %>
+                <% if trial_user? %>
+                  <%= link_to "ログアウト", logout_trial_user_path, method: :delete %>
+                <% else %>
+                  <%= link_to "ログアウト", logout_path, method: :delete %>
+                <% end %>
               </li>
             </ul>
           </li>
         <% else %>
           <li><%= link_to "ログイン", login_path %></li>
-          <li><%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post %></li>
+          <li><%= link_to "お試しログイン", login_trial_user_path %></li>
           <li><%= link_to "アカウント新規作成", new_user_path %></li>
         <% end %>
       </ul>

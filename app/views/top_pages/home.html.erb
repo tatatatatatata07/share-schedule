@@ -1,30 +1,34 @@
 <div class="center top-page">
     <h1>お忙しい中、ポートフォリオをご覧いただき<br>
         誠にありがとうございます</h1>
-    <p>当ポートフォリオ『シェアスケジュール』はフォローしたユーザーのスケジュールをまとめて確認できる<br>
-        ウェブアプリケーションです。</p>
     <p><span class="emphasize-text">是非、下記『お試しログイン』よりアプリケーションをご使用ください。</span></p>
-
-    <%= link_to "お試しログイン", login_path(session: {email: "gest@example.com"}),method: :post ,class: "btn btn-lg btn-secondary emphasize" %>
-    <p>※お試しログインで入力した内容はログアウト時に全て削除されます<br>
-    　本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しております。</p>
-    <h2>本アプリケーションの機能</h2>
+    <%= link_to "お試しログイン", login_trial_user_path, class: "btn btn-lg btn-secondary emphasize" %>
+    <p>※お試しログインで入力した内容はログアウト時に全て削除されます</p>
+    <p>当ポートフォリオ『シェアスケジュール』はフォローしたユーザーのスケジュールをまとめて確認できる<br>
+       ウェブアプリケーションです。<br>
+       本アプリは<%= link_to "Ruby on Rails チュートリアル", "https://railstutorial.jp/" %>の内容を参考に作成しております。</p>　
+    <h2>アプリケーションの機能</h2>
     <ol class="top-page-list">
-        <li>&#9312; ユーザー登録/編集機能 <br>※Session&Cookieの学習のためdevice gemは使用しておりません</li>
-        <li>&#9313; お試しログイン機能 Facebookログイン機能<br>※device gemを使用しないFacebook認証を実装しております</li>
-        <li>&#9314; ユーザーのフォロー/アンフォロー機能<br>※Ajaxを使用したことで複数名のフォロー/アンフォローの操作がスムーズで</li>
-        <li>&#9315; スケジュールの登録/編集/削除機能<br>※simple calendar gem を使用</li>
-        <li>&#9316; フォローしたユーザーのスケジュールを確認する機能</li>
+        <li class="top-list"><span class="li-strong">ユーザーのCRUD機能</span><br>※Session&Cookieの学習のためdevice gemは使用しておりません</li>
+        <li><span class="li-strong">お試しログイン機能 Facebookログイン機能</span><br>※device gemを使用しないFacebook認証を実装しております</li>
+        <li><span class="li-strong">ユーザーのフォロー/アンフォロー機能</span><br>※Ajaxを使用したことで複数名のフォロー/アンフォローの操作をスムーズにしています</li>
+        <li><span class="li-strong">スケジュールのCRUD機能</span><br>※simple calendar gem を使用</li>
+        <li><span class="li-strong">フォローしたユーザーのスケジュールを確認する機能</span></li>
     </ol>
-    <h2>本アプリケーションの構成</h2>
+    <h2>アプリケーションのインフラ構成</h2>
+    <ol class="top-page-list">
+        <li class="top-list"><span class="li-strong">Web3層構成(AWS EC2を4台使用)</span><br>
+            Webサーバー：Nginx ※Route53にて独自ドメイン・https化<br>
+            アプリケーションサーバー：Puma・Rails<br>
+            データベースサーバー：MySQL<br>
+            NATサーバー：プライベートサブネット内のサーバーの外部通信用（作業時踏み台サーバーとしても使用）</li>
+    </ol>
     <h2>開発環境</h2>
     <ol class="top-page-list">
-        <li>&#9312; 下記のアカウント作成ボタンをクリックしアカウントを作成します</li>
-        <li>&#9313; tayejiachuan@gmail.com よりアカウントアクティベーション依頼のメールが届きます</li>
-        <li>&#9314; 登録が完了しましたら、ユーザー一覧からユーザーをフォローします</li>
-        <li>&#9315; 「みんなのスケジュール」でフォローしたユーザーのスケジュールを確認できます</li>
-        <li>&#9316; スケジュールを追加したい日付をクリックするとスケジュールを新規登録できます</li>
+        <li class="top-list"><span class="li-strong">Docker</span></li>
+        <li><span class="li-strong">バージョン管理</span><br>Git(GitHub)</li>
+        <li><span class="li-strong">OS</span><br>Linux Windows Mac</li>
     </ol>
-    
+    <%= link_to "お試しログイン", login_trial_user_path, class: "btn btn-lg btn-secondary emphasize" %>
     <%= link_to "アカウントを作成する", new_user_path ,class: "btn btn-lg btn-secondary" %>
 </div>
