@@ -49,6 +49,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def trial_user_destroy
+    if current_user.email == "gest@example.com"
+      User.find_by(email: "gest@example.com").destroy
+      flash[:success] = "ログアウト及びデータ削除が完了しました"
+      redirect_to root_path
+    else
+    end
+    
+  end
+  
   def feed
     Meeting.where("user_id = ?", id)
   end
@@ -84,6 +94,22 @@ class UsersController < ApplicationController
   def auth_failure 
     @user = User.new
     render 'new'
+  end
+  
+  #お試しログイン
+  def trial_login
+    @user = User.new
+    @user.email = "gest@example.com"
+    @user.name = "ゲスト"
+    #debugger
+    result = @user.save(context: :trial_login)
+    if result
+      @user.activate
+      log_in @user
+      redirect_to users_path
+    else
+      redirect_to root_path
+    end
   end
     
   private
