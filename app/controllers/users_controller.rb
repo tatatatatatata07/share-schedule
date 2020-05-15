@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.name = @name
-    if @user.save
+    #お試しログイン用のユーザーを作らせない
+    if @user.email != "gest@example.com" && @user.save
       @user.send_activation_email
       flash[:info] = "ご登録いただいたメールアドレスに送信しました。メールをご確認いただき、ご登録をお願い致します。"
       redirect_to login_path
