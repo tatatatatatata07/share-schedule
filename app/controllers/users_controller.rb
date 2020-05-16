@@ -54,7 +54,11 @@ class UsersController < ApplicationController
     if current_user.email == "gest@example.com"
       User.find_by(email: "gest@example.com").destroy
       flash[:success] = "ログアウト及びデータ削除が完了しました"
-      redirect_to root_path
+      if params[:create] == "1"
+        redirect_to new_user_path
+      else
+        redirect_to root_path
+      end
     else
     end
     
