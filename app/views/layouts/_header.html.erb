@@ -11,7 +11,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? && trial_user? %>
         <% else %>
-          <li><%= link_to "使い方", using_path %></li>
+          <li><%= link_to "アプリの使い方", using_path %></li>
         <% end %>
         <% if logged_in? %>
           <li><%= link_to "ユーザー一覧", users_path %></li>
