@@ -16,6 +16,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   
+  test "お試しログイン用ユーザーでログインしたときの挙動をテスト" do
+    get login_path
+    assert_template 'sessions/new'
+    post login_path, params: { session: { email: "gest@example.com", password: "password" } }
+    assert_template 'sessions/new'
+    assert_not flash.empty?
+    get root_path
+    assert flash.empty?
+  end
+  
   test "正しいユーザーでログインしてログアウトを試みたときの挙動をテスト" do
     get login_path
     post login_path, params: { session: { email:    @user.email,
