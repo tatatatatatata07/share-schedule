@@ -26,6 +26,6 @@ production:
   reconnect: false
   database: share_calendar
   pool: 5
-  username: railsuser
-  password: Mamy1327@
-  host: 10.0.2.12
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['RAILS_DATABASE_HOST'] %>
