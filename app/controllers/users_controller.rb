@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     end
   end
   
-  #facebook認証認証に失敗した際の処理
+  #facebook認証認���に失敗した際の処理
   def auth_failure 
     @user = User.new
     render 'new'
