@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   def trial_user_destroy
     if current_user.email == "gest@example.com"
       User.find_by(email: "gest@example.com").destroy
-      flash[:success] = "ログアウト及びデータ削除が完了しました"
+      flash[:success] = "お試しログインをご使用いただきありがとうございました ログアウト及びデータ削除が完了しました"
       if params[:create] == "1"
         redirect_to new_user_path
       else
