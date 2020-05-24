@@ -7,10 +7,17 @@ User.create!(name:  "加川 拓也",
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "ゲスト",
-             email: "gest@example.com",
+User.create!(name:  "山田 太郎",
+             email: "yamada@example.com",
              password:              "pass-word2",
              password_confirmation: "pass-word2",
+             activated: true,
+             activated_at: Time.zone.now)
+
+User.create!(name:  "ゲスト",
+             email: "gest@example.com",
+             password:              "pass-word3",
+             password_confirmation: "pass-word3",
              activated: true,
              activated_at: Time.zone.now)
 
