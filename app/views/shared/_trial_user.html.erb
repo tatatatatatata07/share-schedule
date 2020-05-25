@@ -1,4 +1,4 @@
-<% if logged_in? && trial_user? && !current_user.meeting.empty? %>
+<% if logged_in? && trial_user? && !current_user.meeting.reload.empty? %>
   <div class="explain-text">
     <p>手順(4/4)</p>
     <h2>ここまでご覧いただきありがとうございました</h2>
