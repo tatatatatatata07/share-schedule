@@ -5,7 +5,7 @@
       <h1>スケジュール日程</h1>
       <p><%= @meeting.start_time.month %> 月 <%= @meeting.start_time.day %> 日 <%= @meeting.start_time.hour %> 時 <%= @meeting.start_time.to_s[14,2] %> 分 <p>
       <h1>スケジュール作成者</h1>
-      <p><%= @meeting.user.name %></p>
+      <%= link_to @meeting.user.name, user_path(@meeting.user.id) %>
    </section>
     <% @user = @meeting.user %>
     <section class="stats">
