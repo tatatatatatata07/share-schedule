@@ -425,19 +425,23 @@ input {
 }
 
 .schedule-detail{
+  a{
+      font-size: 1.5em;
+      color: brown;
+    }
   .col-md-4{
     width: 50%;
       p{
       text-decoration: underline;
     }
+    a{
+      left: 30%;
+    }
   }
   .col-md-8{
     width: 50%;
     padding: 30px 0;
-    a{
-      font-size: 1.5em;
-      color: brown;
-    }
+    
   }
   h1{
     font-size: 2.3em;
@@ -446,9 +450,7 @@ input {
     text-align: center;
     font-size: 1.5em;
   }
-  .stats a:first-child{
-    padding-left: 40%;
-  }
+
 }
 
 
