@@ -4,6 +4,26 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:test_user)
+    @trial_user = users(:test_gest)
+  end
+  
+  test "お試しログインユーザーではアカウント更新ができないことをテスト" do
+    get edit_user_path(@trial_user)
+    log_in_as(@user)
+    assert_redirected_to edit_user_url(@user)
+    first_name  = "test"
+    last_name = "user2"
+    email = "xyz@example.com"
+    patch user_path(@user), params: { user: { first_name:  first_name,
+                                              last_name: last_name,
+                                              email: email,
+                                              password:              "",
+                                              password_confirmation: "" } }
+    assert_not flash.empty?
+    assert_redirected_to @user
+    @user.reload
+    assert_equal "test user2",  @user.name
+    assert_equal email, @user.email
   end
 
   test "無効な値でアカウント情報を更新しようとしたときの挙動をテスト" do

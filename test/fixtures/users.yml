@@ -33,6 +33,13 @@ test_goro:
   password_digest: <%= User.digest('password') %>
   activated: false
   activated_at: nil
+  
+test_gest:
+  name: Test Gest
+  email: gest@example.com
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
