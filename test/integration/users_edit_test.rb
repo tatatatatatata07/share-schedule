@@ -10,7 +10,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test "お試しログインユーザーではアカウント更新ができないことをテスト" do
     get edit_user_path(@trial_user)
     log_in_as(@user)
-    assert_redirected_to edit_user_url(@user)
+    assert_redirected_to root_url
     first_name  = "test"
     last_name = "user2"
     email = "xyz@example.com"
@@ -19,11 +19,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               email: email,
                                               password:              "",
                                               password_confirmation: "" } }
-    assert_not flash.empty?
-    assert_redirected_to @user
-    @user.reload
-    assert_equal "test user2",  @user.name
-    assert_equal email, @user.email
+    assert_redirected_to root_url
   end
 
   test "無効な値でアカウント情報を更新しようとしたときの挙動をテスト" do

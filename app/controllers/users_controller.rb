@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     end
   end
   
-  #facebook認証認���に失敗した際の処理
+  #facebook認証認証に失敗した際の処理
   def auth_failure 
     @user = User.new
     render 'new'
@@ -126,7 +126,13 @@ class UsersController < ApplicationController
     
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      if current_user?(@user)
+        if trial_user?
+          redirect_to(root_url)
+        end
+      else
+        redirect_to(root_url)
+      end
     end
     
     def admin_user
