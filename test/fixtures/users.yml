@@ -35,7 +35,7 @@ test_goro:
   activated_at: nil
   
 test_gest:
-  name: Test Gest
+  name: ゲスト
   email: gest@example.com
   password_digest: <%= User.digest('password') %>
   activated: true
