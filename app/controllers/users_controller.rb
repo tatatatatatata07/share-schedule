@@ -106,7 +106,6 @@ class UsersController < ApplicationController
     @user = User.new
     @user.email = "gest@example.com"
     @user.name = "ゲスト"
-    #debugger
     result = @user.save(context: :trial_login)
     if result
       @user.activate
