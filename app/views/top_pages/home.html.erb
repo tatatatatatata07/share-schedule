@@ -10,7 +10,7 @@
     <h2>アプリケーションの機能</h2>
     <ol class="top-page-list">
         <li class="top-list"><span class="li-strong">ユーザーのCRUD機能</span><br>※Session&Cookieの学習のためdevice gemは使用しておりません</li>
-        <li><span class="li-strong">お試しログイン機能 Facebookログイン機能</span><br>※device gemを使用しないFacebook認証を実装しております</li>
+        <li><span class="li-strong">お試しログイン機能/ Facebookログイン機能</span><br>※device gemを使用しないFacebook認証を実装しております</li>
         <li><span class="li-strong">ユーザーアクティベーション機能</span><br>Action MailerでGmailと連携し、Gmail経由でアクティベーションメールが届きます</li>
         <li><span class="li-strong">ユーザーのフォロー/アンフォロー機能</span><br>※Ajaxを使用したことで複数名のフォロー/アンフォローの操作をスムーズにしています</li>
         <li><span class="li-strong">スケジュールのCRUD機能</span><br>※simple calendar gem を使用</li>
@@ -18,20 +18,22 @@
     </ol>
     <h2>開発する上で気をつけたポイント</h2>
     <ol class="top-page-list">
-        <li class="top-list"><span class="li-strong">実務を意識したインフラ</span><br>Web3層アーキテクチャにしています(AWS EC2を4台使用)<br>Puma + Nginx(SSL) + MySQL</li>
+        <li class="top-list"><span class="li-strong">実務を意識したインフラ</span><br>Web3層アーキテクチャにしています(AWS EC2を4台使用)<br>構成：Puma + Nginx(SSL) + MySQL</li>
         <li class="top-list"><span class="li-strong">インフラ構成図</span></li>
-            <img src="/assets/infra_image.png" alt="">
+            <img src="/assets/infra_image.png" alt="インフラ構成図">
         <li class="top-list">Webサーバー：Nginx ※Route53にて独自ドメイン・https化<br>
             アプリケーションサーバー：Puma・Rails<br>
             データベースサーバー：MySQL<br>
-            NATサーバー：プライベートサブネット内のサーバーの外部通信用（作業時踏み台サーバーとしても使用）</li>
+            NATサーバー：プライベートサブネット内のサーバーの外部通信用<br>※NATサーバーはサーバー作業時に踏み台サーバーとしても使用</li>
+        <li class="top-list"><span class="li-strong">データベースのER図</span></li>
+            <img src="/assets/ER.jpg" alt="ER図">
     </ol>
     <h2>今後の課題</h2>
     <ol class="top-page-list">
-        <li class="top-list"><span class="li-strong">開発環境を複製</span><br>1人での開発でしたので今回は使いませんでしたが、実務では複数人で開発するための開発環境の共有が課題になっています<br>(Dockerを学習してみたいと考えています)</li>
-        <li><span class="li-strong">UI UX の向上</span><br>現状Bootstorapに多少スタイルを付け加えているだけですので、対象となるユーザー層を想定し、ボタンを配置に理由をつけていきたいです</li>
-        <li><span class="li-strong">テスト設計</span><br>自分なりにユーザーを考慮してテストを作成しましたが、テストの指針が曖昧で思いついたテストしか書けていませんので、テストについて学習予定です</li>
-        <li><span class="li-strong">コードの可読性</span><br>自分なりの見やすさになってしまっているため、誰が読んでも理解できるようコードの可読性について学習予定です</li>
+        <li class="top-list"><span class="li-strong">開発環境を共有</span><br>シェアカレンダーは1人での開発でしたので今回は不要でしたが、<br>複数人で開発するための開発環境共有が課題になっています<br>(Dockerを学習してみたいと考えています)</li>
+        <li><span class="li-strong">UI UX の向上</span><br>Bootstorapにスタイルを付け加えて作成しましたが、ボタンの配置などのレイアウトについて悩む点が多く、課題があると感じました<br>そのため UI UX についても学習していきたいと考えています</li>
+        <li><span class="li-strong">テスト設計</span><br>Rails標準のテスティングフレームワークであるMinitestでテストを作成しましたが、そもそも何を書いたら良いのかという点から躓いてしまいました<br>自分が必要だと思った箇所のテストを作成しましたが、テストについては理解が不足していると感じるためテスト技法について学習予定です</li>
+        <li><span class="li-strong">コードの可読性</span><br>自分なりの見やすさになってしまっているため課題だと感じています<br>誰が読んでも理解できるコードを書くことができるようコードの可読性について学習予定です</li>
     </ol>
 
     <%= link_to "お試しログイン", login_trial_user_path, class: "btn btn-lg btn-secondary emphasize" %>
