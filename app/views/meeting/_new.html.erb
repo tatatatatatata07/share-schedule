@@ -1,0 +1,17 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label :start_time, "スケジュールの開始時間" %>
+
+<% hours = (0..23).to_a %>
+<% minutes = (0..5).to_a.map{|minute| minute * 10}  %>
+
+<%= f.select :start_hour, hours.map {|h| ["#{h}時",h] } %>  
+<%= f.select :start_minute, minutes.map {|m| ["#{m}分",m] } %>  
+
+<%= f.label :title, "タイトル" %>
+<%= f.text_area :title, :placeholder => "例：ミーティング（30文字まで）", class: 'form-control' %>
+
+<%= f.label :content, "スケジュールの詳細" %>
+<%= f.text_area :content, :placeholder => "例：2F B室にて（200文字まで）", class: 'form-control' %>
+
+<%= f.submit "スケジュールの作成", class: "btn btn-secondary" %>
