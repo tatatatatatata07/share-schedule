@@ -18,28 +18,12 @@
   <h1><%= @meeting.start_time.month %> 月 <%= @meeting.start_time.day %> 日 のスケジュール作成</h1>
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    
     <%= form_for(@meeting, url: schedule_path) do |f| %>
-    
-      <%= render 'shared/error_messages', object: f.object %>
-    
-      <%= f.label :start_time, "スケジュールの開始時間" %>
-      
-      <% hours = (0..23).to_a %>
-      <% minutes = (0..5).to_a.map{|minute| minute * 10}  %>
-      
-      <%= f.select :start_hour, hours.map {|h| ["#{h}時",h] } %>  
-      <%= f.select :start_minute, minutes.map {|m| ["#{m}分",m] } %>  
-    
-      <%= f.label :title, "タイトル" %>
-      <%= f.text_area :title, :placeholder => "例：ミーティング（30文字まで）", class: 'form-control' %>
-
-      <%= f.label :content, "スケジュールの詳細" %>
-      <%= f.text_area :content, :placeholder => "例：2F B室にて（200文字まで）", class: 'form-control' %>
-      
+      <%= render 'new', f: f %>
       <%= f.hidden_field :start_date, :value => @meeting.start_time.to_s[0,10] %>
-
-      <%= f.submit "スケジュールの作成", class: "btn btn-secondary" %>
     <% end %>
+    
   </div>
 </div>
 <!--　newアクションで初回に表示されるページ　-->
@@ -47,27 +31,12 @@
   <h1><%= params[:date].to_date.month %> 月 <%= params[:date].to_date.day %> 日 のスケジュール作成</h1>
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    
     <%= form_for(@meeting, url: schedule_path) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-      
-    <%= f.label :start_time, "スケジュールの開始時間" %>
-      
-      <% hours = (0..23).to_a %>
-      <% minutes = (0..5).to_a.map{|minute| minute * 10}  %>
-      
-      <%= f.select :start_hour, hours.map {|h| ["#{h}時",h] } %>  
-      <%= f.select :start_minute, minutes.map {|m| ["#{m}分",m] } %>  
-      
-      <%= f.label :title, "タイトル" %>
-      <%= f.text_area :title, :placeholder => "例：ミーティング（30文字まで）", class: 'form-control' %>
-
-
-      <%= f.label :content, "スケジュールの詳細" %>
-      <%= f.text_area :content, :placeholder => "例：2F B室にて（200文字まで）", class: 'form-control' %>
-      
+      <%= render 'new', f: f %>
       <%= f.hidden_field :start_date, :value => params[:date] %>
-      <%= f.submit "スケジュールの作成", class: "btn btn-secondary" %>
     <% end %>
+    
   </div>
 </div>
 <% end %>
