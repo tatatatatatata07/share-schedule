@@ -123,6 +123,7 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
     
+    #「お試しユーザーではなく」かつ「正しいユーザー」を確認する
     def correct_user
       @user = User.find(params[:id])
       if current_user?(@user)
@@ -134,10 +135,12 @@ class UsersController < ApplicationController
       end
     end
     
+    #現在のユーザーが管理者権限を持っていなければ処理をさせずルートURLへ移動
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
     
+    #姓名分けて入力していただいたデータを半角スペースを入れて統合する
     def mix_name
       @name = params[:user][:first_name] + " " + params[:user][:last_name]
     end
