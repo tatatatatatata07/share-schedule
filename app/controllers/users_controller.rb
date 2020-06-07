@@ -124,6 +124,7 @@ class UsersController < ApplicationController
     end
     
     #「お試しユーザーではなく」かつ「正しいユーザー」を確認する
+    #お試しユーザーをedit及updateさせないために、例え「正しいユーザー」であっても除外する
     def correct_user
       @user = User.find(params[:id])
       if current_user?(@user)
