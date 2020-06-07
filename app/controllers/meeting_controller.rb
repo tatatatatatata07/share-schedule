@@ -80,6 +80,7 @@ class MeetingController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
     
+    #フォームにて入力された「日付」「時」「分」を統合する
     def mix_time
       @start_time = params[:meeting][:start_date] + " " + params[:meeting][:start_hour] + ":" + params[:meeting][:start_minute]
     end
