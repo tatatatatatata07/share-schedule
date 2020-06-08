@@ -7,7 +7,7 @@ class AccountActivationsController < ApplicationController
       flash[:success] = "アクティベーションが完了しました"
       redirect_to user
     else
-      flash[:danger] = "申し訳ございません。URLが有効でないためもう一度最初から登録をお願いします"
+      flash[:danger] = "申し訳ございません URLが有効でないためもう一度最初から登録をお願いします"
       redirect_to root_url
     end
   end
