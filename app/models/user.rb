@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  #ユーザーが複数のmeetingを持ち、ユーザーが削除されたら持っていたmeetingも削除される
   has_many :meeting, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -9,6 +10,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token, :activation_token, :reset_token
+  #姓名を分けて入力させる
   attr_accessor :first_name, :last_name
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -19,7 +21,10 @@ class User < ApplicationRecord
                     format: { with: EMAIL_FORMAT },
                     uniqueness: { case_sensitive: false }
   
-  #facebook認証でパスワードのバリデーションをパスする必要があるため、:createと:updateのみバリデーションをかけるようhas_secure_passwordメソッドを改修
+  #facebook認証ではパスワードをfacebook側で設定しているため、Userのpasswordに値が入らない状態でユーザーが作成される。
+  #そのため、facebook認証でのユーザー作成はパスワードバリデーションをパスする必要がある。
+  #そのため:createと:updateアクションが動く通常のユーザー作成と編集ではバリデーションが働いてfacebookのユーザー作成ではバリデーションをかけないようにする。
+  #has_secure_passwordが持つパスワード必須のバリデーションはfalseにして:createと:updateアクションでのみ動くバリデーションを追加
   has_secure_password validations: false
   
   validate(on: [:create, :update]) do |record|
