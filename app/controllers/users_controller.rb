@@ -103,6 +103,11 @@ class UsersController < ApplicationController
   
   #お試しログイン
   def trial_login
+    #前のユーザーがログアウトを忘れていたときの対応
+    #ログアウトを忘れたときに再度ログインできなくなることを防止
+    if user = User.find_by(email: "gest@example.com")
+      user.destroy
+    end
     @user = User.new
     @user.email = "gest@example.com"
     @user.name = "ゲスト"
