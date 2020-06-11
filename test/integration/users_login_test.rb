@@ -32,6 +32,13 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get login_trial_user_path
     assert_redirected_to users_path
     assert is_logged_in?
+    #お試しユーザーをログアウトし忘れて異なるユーザーがログインを試みた時の挙動をテスト
+    get login_trial_user_path
+    assert_redirected_to users_path
+  end
+  
+  test "お試しユーザーをログアウトし忘れた時の挙動をテスト" do
+    #
   end
   
   
