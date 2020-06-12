@@ -1,6 +1,7 @@
 <% provide(:first_title, 'ユーザー一覧') %>
 <h1>登録されているユーザーの一覧</h1>
 
+<!-- ここからお試しユーザー用の説明 -->
 <% if trial_user? && current_user.meeting.empty? %>
   <div class="explain-text">
   <p>手順(1/4)</p>
@@ -12,6 +13,7 @@
 <% else %>
   <h2>全てポートフォリオ用のダミーユーザーとなります</h2>
 <% end %>
+<!-- ここまでお試しユーザー用の説明 -->
 
 <div class="user-index-pagination"><%= will_paginate @users, :previous_label => ' 前へ ', :next_label => ' 次へ' %></div>
 <div class="user-index">

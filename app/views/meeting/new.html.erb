@@ -1,5 +1,6 @@
 <% provide(:first_title, "スケジュールの登録") %>
 
+<!-- ここからお試しユーザー用の説明 -->
 <% if trial_user? && current_user.meeting.empty? %>
   <div class="explain-text">
     <p>手順(3/4)</p>
@@ -12,6 +13,7 @@
 <% else %>
   <h2>全てポートフォリオ用のダミーユーザーとなります</h2>
 <% end %>
+<!-- ここまでお試しユーザー用の説明 -->
 
 <!--　createアクションが失敗して再表示された場合　-->
 <% if !@meeting.user_id.nil? %>

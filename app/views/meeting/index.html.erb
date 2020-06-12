@@ -1,3 +1,4 @@
+<!-- ここからお試しユーザー用の説明 -->
 <% if trial_user? && current_user.meeting.empty? %>
   <div class="explain-text">
     <p>手順(2/4)</p>
@@ -10,6 +11,7 @@
   <h2>ここではフォローしたユーザー達のスケジュールをまとめて確認することができます</h2>
   <h2>日付をクリックすると新しいスケジュールを作成できます</h2>
 <% end %>
+<!-- ここまでお試しユーザー用の説明 -->
 
 <%= week_calendar number_of_weeks: 1 do |date| %>
   <div class="schedule_date"><%= link_to "#{date.month} / #{date.day}" ,"/meeting/#{date}/new" %></div>
