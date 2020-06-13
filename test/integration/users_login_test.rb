@@ -23,6 +23,9 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to users_path
     assert is_logged_in?
     assert flash.empty?
+    assert_select "a[href=?]", login_path, count: 0
+    #assert_select "a[href=?]", logout_trial_user_path
+    #assert_select "a[href=?]", user_path(@user)
   end
   
   test "お試しユーザーの挙動をテスト" do
@@ -36,11 +39,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get login_trial_user_path
     assert_redirected_to users_path
   end
-  
-  test "お試しユーザーをログアウトし忘れた時の挙動をテスト" do
-    #
-  end
-  
   
   test "正しいユーザーでログインしてログアウトを試みたときの挙動をテスト" do
     get login_path
