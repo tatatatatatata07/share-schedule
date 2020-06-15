@@ -27,15 +27,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   
   test "お試しユーザーの挙動をテスト" do
     #お試しユーザーは存在していないことが前提
-    gest_user = User.find_by(email: "gest@example.com")
-    gest_user.destroy
     get login_trial_user_path
-    #debugger
     assert_redirected_to users_path
     assert is_logged_in?
     assert_select "a[href=?]", login_path, count: 0
-    #assert_select "a[href=?]", logout_trial_user_path
-    #assert_select "a[href=?]", user_path(@user)
     #お試しユーザーをログアウトし忘れて異なるユーザーがログインを試みた時の挙動をテスト
     get login_trial_user_path
     assert_redirected_to users_path
@@ -49,7 +44,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
-    debugger
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", user_path(@user)
