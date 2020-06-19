@@ -9,7 +9,7 @@
       </section>
       <% @user = @meeting.user %>
       <h1>スケジュール日時</h1>
-      <p><%= @meeting.start_time.month %> 月 <%= @meeting.start_time.day %> 日 <%= @meeting.start_time.hour %> 時 <%= @meeting.start_time.to_s[14,2] %> 分 <p>
+      <p><%= link_to "#{@meeting.start_time.month} 月 #{@meeting.start_time.day} 日 #{@meeting.start_time.hour} 時 #{@meeting.start_time.to_s[14,2]} 分", edit_meeting_path(@meeting) %><p>
    </section>
    </aside>
   <div class="col-md-8">
