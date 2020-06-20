@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     <section class="user_info">
      <h1>スケジュール作成者</h1>
-      <%= link_to @meeting.user.name, user_path(@meeting.user.id) %>
+      <p><%= link_to @meeting.user.name, user_path(@meeting.user.id) %></p>
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
