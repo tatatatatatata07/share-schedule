@@ -306,32 +306,6 @@ input {
   }
 }
 
-/* スライダー */
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  text-align: center;
-  a {
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.users.follow {
-  padding: 0;
-}
-
 /* スケジュールフォーム */
 .content {
   display: block;
@@ -425,6 +399,7 @@ input {
   a{
       color: brown;
       margin:0 auto;
+      display: block;
     }
   .col-md-4{
     width: 50%;
@@ -450,6 +425,33 @@ input {
 
 }
 
+/* スライダー */
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+  a {
+    display: inline-block;
+    border-left: 1px solid $gray-lighter;
+    padding: 0 10px 0 10px;
+    color: gray;
+    &:first-child {
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
 
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
