@@ -1,4 +1,22 @@
 <% provide(:first_title, "ログイン") %>
+<script type="text/javascript"><!--
+function InputCharCheck( minnum, target, report ) {
+   var diff = minnum - document.getElementById(target).value.length;
+   var reps, repc;
+   if( diff > 0 ) {
+      // 足りない場合
+      reps = "（あと " + diff + " 文字足りません）";
+      repc = "red";
+   }
+   else {
+      // 足りた場合
+      reps = "OK！";
+      repc  = "blue";
+   }
+   document.getElementById(report).innerHTML = reps;
+   document.getElementById(report).style.color = repc;
+}
+// --></script>
 <h1>ログイン</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
