@@ -16,7 +16,9 @@
 
     <div class="schedule_show">
       <h1><%= @meeting.title %></h1>
-      <p><%= @meeting.content %></p>
+      <div class="schedule_show_content">
+        <p><%= @meeting.content %></p>
+      </div>
       <% if current_user?(@meeting.user) || current_user.admin? %>
                 <%= link_to "編集する", edit_meeting_path(@meeting) %>
                 <%= link_to "削除する", @meeting, method: :delete,
