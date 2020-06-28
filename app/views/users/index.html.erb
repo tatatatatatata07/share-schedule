@@ -26,7 +26,9 @@
     <%= submit_tag "検索", :name => nil %>
   </p>
 <% end %>
-
+<p>
+  <%= submit_tag "クリア", :name => nil %>
+</p>
 <ul class="users">
   <% @users.each do |user| %>
     <% @user = user %>
