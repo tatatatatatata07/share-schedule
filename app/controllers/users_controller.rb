@@ -5,7 +5,13 @@ class UsersController < ApplicationController
   before_action :mix_name,       only: [:create, :update]
   
   def index
-    @users = User.where(activated: true).paginate(page: params[:page], per_page: 30)
+    #検索のパラメータ「search」に値が入っていれば検索結果を返し、そうでなければユーザー一覧を表示する
+    if params[:search]
+      @users = User.where(activated: true).where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 30)
+    else
+      @users = User.where(activated: true).paginate(page: params[:page], per_page: 30)
+    end
+    
   end
   
   def show
