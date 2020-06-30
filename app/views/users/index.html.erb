@@ -20,6 +20,11 @@
 <div class="user-index">
 
 <%= form_tag users_path, :method => 'get' do %>
+
+<% if @count %>
+  <p>検索結果：<%= @count %>件</p>
+<% end %>
+
   <p>
     <!-- 新しいアクションとパスを作る予定 -->
     <%= text_field_tag :search, params[:search] %>
