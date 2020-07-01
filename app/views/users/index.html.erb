@@ -17,13 +17,18 @@
 
 <div class="user-index-pagination"><%= will_paginate @users, :previous_label => ' 前へ ', :next_label => ' 次へ' %></div>
 
+<!-- 検索結果が空であれば表示せず、0であれば一致しない文言、1以上であれば検索結果の表示 -->
+<div class="search-box">
+  <% if @count && @count > 0 %>
+    <p>検索結果：<%= @count %>件</p>
+  <% elsif @count%>
+    <p>検索条件に一致する項目はありません</p>
+  <% end %>
+</div>
+
 <div class="user-index">
 
 <%= form_tag users_path, :method => 'get' do %>
-
-<% if @count %>
-  <p>検索結果：<%= @count %>件</p>
-<% end %>
 
   <p>
     <!-- 新しいアクションとパスを作る予定 -->

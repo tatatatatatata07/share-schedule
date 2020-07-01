@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   
   def index
     #検索のパラメータ「search」に値が入っていれば検索結果を返し、そうでなければユーザー一覧を表示する
-    if params[:search] != "" or params[:search] != nil
-      @users = User.where(activated: true).where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 30)
-      @count = @users.count
-    else
+    if params[:search] == "" or params[:search] == nil
       @users = User.where(activated: true).paginate(page: params[:page], per_page: 30)
       @count = false
+    else
+      @users = User.where(activated: true).where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page], per_page: 30)
+      @count = @users.count
     end
     
   end
